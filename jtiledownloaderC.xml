@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="Type">BBoxLatLon</entry>
+<entry key="OutputLocation">/home/costales/tiles</entry>
+<entry key="TileServer">Mapnik</entry>
+<entry key="MaxLat">43.67979</entry>
+<entry key="OutputZoomLevel">1-17</entry>
+<entry key="MaxLon">-5.33936</entry>
+<entry key="MinLat">42.93431</entry>
+<entry key="MinLon">-5.95184</entry>
+</properties>
