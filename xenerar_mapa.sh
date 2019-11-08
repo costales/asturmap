@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
-sudo apt install xml-twig-tools
-sudo swapoff -a
+sudo apt install xml-twig-tools osmctools rename docker.io
+
 wget http://download.openstreetmap.fr/extracts/europe/spain/asturias-latest.osm.pbf
 osmconvert asturias-latest.osm.pbf -o=asturies1.osm
 rm asturias-latest.osm.pbf
@@ -25,6 +25,8 @@ mv asturies3.osm.xml asturies3.osm
 
 sed -i 's/&#39;/’/I' asturies3.osm
 
+sed -i 's/\"Túmulo de /\"Túmulu /I' asturies3.osm
+sed -i 's/\"Túmulo /\"Túmulu /I' asturies3.osm
 sed -i 's/\"Centro Comercial de /\"Centru Comercial/I' asturies3.osm
 sed -i 's/\"Centro Comercial/\"Centru Comercial/I' asturies3.osm
 sed -i 's/\"Centro de Transporte de /\"Centru de Tresporte/I' asturies3.osm
@@ -222,8 +224,11 @@ sudo su -
 # docker kill $(docker ps -q) ; docker rm $(docker ps -a -q) ; docker rmi $(docker images -q)
 ps -ef | grep 'docker' | grep -v grep | awk '{print $2}' | xargs -r kill -9
 
-docker run -v ./asturies_final.pbf:/data.osm.pbf -v openstreetmap-data:/var/lib/postgresql/10/main overv/openstreetmap-tile-server import
-docker run -p 80:80 -v openstreetmap-data:/var/lib/postgresql/10/main -d overv/openstreetmap-tile-server run
+docker pull pelias/openstreetmap
+docker volume create openstreetmap-data
+docker run -v /absolute/path/to/luxembourg.osm.pbf:/data.osm.pbf -v openstreetmap-data:/var/lib/postgresql/12/main overv/openstreetmap-tile-server import
+docker run -p 80:80 -v openstreetmap-data:/var/lib/postgresql/12/main -d overv/openstreetmap-tile-server run
+# Comprobar sale tile visitando: http://localhost:80/tile/13/3963/2995.png
 
 echo "Abrir JTileDownloader con ficheros *.xml"
 echo "Descargar"
