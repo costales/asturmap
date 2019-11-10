@@ -1,3 +1,4 @@
+echo "Usa Ubuntu 18.04 con estos pasos"
 #!/bin/bash
 set -x
 sudo apt install xml-twig-tools osmctools rename docker.io
@@ -216,6 +217,15 @@ sed -i 's/\"Centro de /\"Centru /I' asturies3.osm
 sed -i 's/\"Centro /\"Centru /I' asturies3.osm
 sed -i 's/\"Piscinas de /\"Piscines /I' asturies3.osm
 sed -i 's/\"Piscinas /\"Piscines /I' asturies3.osm
+sed -i 's/\"Busto de /\"Bustu /I' asturies3.osm
+sed -i 's/\"Busto /\"Bustu /I' asturies3.osm
+sed -i 's/\"Colexu Público /\"Colexu Públicu /I' asturies3.osm
+sed -i 's/\"Escuela de Educación /\"Escuela d’Educación /I' asturies3.osm
+sed -i 's/\"Club Hípico /\"Club Hípicu /I' asturies3.osm
+sed -i 's/\"Facultad de /\"Facultá /I' asturies3.osm
+sed -i 's/\"Facultad /\"Facultá /I' asturies3.osm
+sed -i 's/\"Urgencias/\"Urxencies/I' asturies3.osm
+sed -i 's/\"Residencia para mayores/\"Residencia pa mayores/I' asturies3.osm
 
 osmconvert asturies3.osm -o=asturies_final.pbf
 rm asturies3.osm
